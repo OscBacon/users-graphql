@@ -1,0 +1,30 @@
+type Query {
+  version: String!
+
+  # users: [Users!]!
+  users: UsersConnection! @paginate
+}
+
+type Users {
+    id: Int
+    firstname: String
+    lastname: String
+    birthdate: Date
+}
+
+type UsersConnection {
+    edges: [UsersEdge]
+    pageInfo: PageInfo!
+}
+
+type UsersEdge {
+    cursor: String!
+    node: Users
+}
+
+type PageInfo {
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+  startCursor: String
+  endCursor: String
+}

@@ -1,0 +1,1 @@
+directive @paginate(first: Int, after: String) on FIELD_DEFINITION | FIELD

@@ -14,11 +14,13 @@ class Paginate():
         ctx: Optional[Dict[str, Any]],
         info: "Info",
     ) -> Any:
-        parent_result["edges"] += [{"node": {"id": 123455}}]
-        parent_result["pageInfo"] = {
+        result = await next_resolver(parent_result, args, ctx, info)
+        #result["edges"] += [{"node": {"id": 123455}}]
+        result["pageInfo"] = {
             "hasNextPage": True,
             "hasPreviousPage": False,
             "startCursor": "cursor1",
             "endCursor": "cursor2"
         }
-        return await next_resolver(parent_result, args, ctx, info)
+        #return await next_resolver(result, args, ctx, info)
+        return result
